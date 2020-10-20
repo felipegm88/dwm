@@ -1,10 +1,5 @@
-/*  ____ _____  */
-/* |  _ \_   _|  Derek Taylor (DistroTube) */
-/* | | | || |  	http://www.youtube.com/c/DistroTube */
-/* | |_| || |  	http://www.gitlab.com/dwt1/ */
-/* |____/ |_|  	*/ 
-
 /* See LICENSE file for copyright and license details. */
+
 /* appearance */
 static const unsigned int borderpx    = 2;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
@@ -97,7 +92,7 @@ static const char *tabtermcmd[]  = { "tabbed", "-r 2", "st", "-w", "''", NULL };
 
 static Key keys[] = {
 	/* modifier             key        function        argument */
-	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = dmenucmd } },
+	{ MODKEY,               XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,               XK_Return, spawn,          {.v = termcmd } },
 	{ Mod1Mask,             XK_Return, spawn,          {.v = tabtermcmd } },
 	{ MODKEY,               XK_b,      togglebar,      {0} },
@@ -106,15 +101,14 @@ static Key keys[] = {
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,               XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,               XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,               XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,               XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,               XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ControlMask,   XK_Return, zoom,           {0} },
 	{ MODKEY,               XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,     XK_c,      killclient,     {0} },
+	{ MODKEY|ShiftMask,     XK_q,      killclient,     {0} },
 
     /* Layout manipulation */
-	{ MODKEY,               XK_Tab,    cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_Tab,    cyclelayout,    {.i = +1 } },
 	{ MODKEY,               XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,     XK_space,  togglefloating, {0} },
@@ -162,7 +156,7 @@ static Key keys[] = {
 	TAGKEYS(                  XK_7,          6)
 	TAGKEYS(                  XK_8,          7)
 	TAGKEYS(                  XK_9,          8)
-	{ MODKEY|ShiftMask,       XK_q,	   quit,		   {0} },
+	{ MODKEY|ShiftMask,       XK_c,	   quit,		   {0} },
     { MODKEY|ShiftMask,       XK_r,    quit,           {1} }, 
 };
 
