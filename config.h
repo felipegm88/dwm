@@ -108,6 +108,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,     XK_q,      killclient,     {0} },
 
+    /* Scrot imp pant */
+    { 0,                    XK_Print,  spawn,          SHCMD("scrot ~/Images/screenshots/%Y-%m-%d-%H:%M:%S.jpg") },
     /* Layout manipulation */
 	{ MODKEY|ShiftMask,     XK_Tab,    cyclelayout,    {.i = +1 } },
 	{ MODKEY,               XK_space,  setlayout,      {0} },
