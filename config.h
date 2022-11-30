@@ -126,10 +126,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_0,      tag,            {.ui = ~0 } },
 
     /* Switching between monitors */
-	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,               XK_comma,  focusmon,       {.i = +1 } },
+	{ MODKEY,               XK_period, focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = -1 } },
 	
     /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("tabbed -r 2 surf -pe x '.surf/html/homepage.html'") },
