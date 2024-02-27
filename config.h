@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx    = 2;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
@@ -80,7 +82,7 @@ static const Layout layouts[] = {
 #define CMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/usr/local/bin/st", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -89,6 +91,12 @@ static const char *dmenucmd[]    = { "dmenu_run", "-p", "Run: ", NULL };
 /* static const char *termcmd[]     = { "st", "-e fish", NULL }; */
 static const char *termcmd[]     = { "st", NULL };
 static const char *tabtermcmd[]  = { "tabbed", "-r 2", "st", "-w", "''", NULL };
+static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
+static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
+static const char *mutevol[]    = { "/usr/bin/amixer", "set", "Master", "toggle", NULL };
+static const char *medplaypausecmd[] = {"playerctl", "--player=spotify", "play-pause", NULL};
+static const char *mednextcmd[] = {"playerctl", "next", NULL};
+static const char *medprevcmd[] = {"playerctl", "previous", NULL};
 
 static Key keys[] = {
 	/* modifier             key        function        argument */
@@ -160,7 +168,13 @@ static Key keys[] = {
 	TAGKEYS(                  XK_8,          7)
 	TAGKEYS(                  XK_9,          8)
 	{ MODKEY|ShiftMask,       XK_c,	   quit,		   {0} },
-    { MODKEY|ShiftMask,       XK_r,    quit,           {1} }, 
+    { MODKEY|ShiftMask,       XK_r,    quit,           {1} },
+    { 0               , XF86XK_AudioLowerVolume, spawn, {.v = downvol} },
+    { 0               , XF86XK_AudioMute, spawn, {.v = mutevol} },
+    { 0               , XF86XK_AudioRaiseVolume, spawn, {.v = upvol} },
+    { 0               , XF86XK_AudioPlay, spawn, {.v = medplaypausecmd} },
+    { 0               , XF86XK_AudioNext, spawn, {.v = mednextcmd} },
+    { 0               , XF86XK_AudioPrev, spawn, {.v = medprevcmd} },
 };
 
 /* button definitions */
